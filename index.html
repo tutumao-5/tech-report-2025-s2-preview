@@ -1,0 +1,1749 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>科技筑基，品牌突围 - 2025 学年第二学期科技工作汇报 2.1</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2305070c'/%3E%3Cpath d='M12 34h14l4-18 6 34 5-16h11' fill='none' stroke='%2347e6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: rgba(13, 22, 36, 0.72);
+      --panel-strong: rgba(18, 31, 51, 0.92);
+      --line: rgba(127, 213, 255, 0.24);
+      --line-strong: rgba(127, 213, 255, 0.46);
+      --ink: #f3f7fb;
+      --soft: #b7c6d6;
+      --muted: #6f8297;
+      --cyan: #47e6ff;
+      --blue: #2e7bff;
+      --amber: #ffb545;
+      --green: #56e19b;
+      --coral: #ff6c5f;
+      --violet: #9b7cff;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.42);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      background:
+        radial-gradient(circle at 8% 18%, rgba(71, 230, 255, 0.15), transparent 25%),
+        radial-gradient(circle at 82% 12%, rgba(255, 181, 69, 0.16), transparent 26%),
+        radial-gradient(circle at 76% 86%, rgba(86, 225, 155, 0.12), transparent 28%),
+        linear-gradient(135deg, #05070c 0%, #07111e 47%, #06090f 100%);
+    }
+
+    body::after {
+      opacity: 0.62;
+      background-image:
+        linear-gradient(rgba(127, 213, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(127, 213, 255, 0.055) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at 50% 50%, black 0 58%, transparent 86%);
+    }
+
+    #field {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 2;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: clamp(34px, 5vw, 70px);
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: grid;
+      animation: rise 520ms cubic-bezier(.2, .9, .2, 1);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px) scale(0.992); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      left: clamp(20px, 3vw, 46px);
+      right: clamp(20px, 3vw, 46px);
+      top: clamp(18px, 3vw, 42px);
+      bottom: clamp(18px, 3vw, 42px);
+      border: 1px solid rgba(127, 213, 255, 0.18);
+      pointer-events: none;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0, rgba(71, 230, 255, 0.12) 49%, rgba(71, 230, 255, 0.22) 50%, rgba(71, 230, 255, 0.12) 51%, transparent 100%);
+      width: 24%;
+      opacity: 0;
+      pointer-events: none;
+      animation: scan 6.4s ease-in-out infinite;
+    }
+
+    @keyframes scan {
+      0%, 22% { opacity: 0; transform: translateX(-100%); }
+      28%, 58% { opacity: 0.26; }
+      70%, 100% { opacity: 0; transform: translateX(520%); }
+    }
+
+    .hud {
+      position: absolute;
+      top: clamp(18px, 2.1vw, 32px);
+      left: clamp(24px, 3.5vw, 54px);
+      right: clamp(24px, 3.5vw, 54px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: clamp(12px, 1vw, 14px);
+      color: var(--muted);
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .hud strong {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 30px;
+      padding: 0 12px;
+      border: 1px solid rgba(71, 230, 255, 0.28);
+      color: var(--cyan);
+      background: rgba(71, 230, 255, 0.08);
+      font-size: clamp(12px, 1vw, 14px);
+      font-weight: 700;
+    }
+
+    .section-tag::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: currentColor;
+      box-shadow: 0 0 16px currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    h1 {
+      font-size: clamp(56px, 8.2vw, 132px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: clamp(40px, 5.6vw, 82px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: clamp(22px, 2.1vw, 34px);
+      line-height: 1.15;
+      font-weight: 800;
+    }
+
+    .lead {
+      font-size: clamp(18px, 1.65vw, 27px);
+      line-height: 1.55;
+      color: var(--soft);
+      font-weight: 520;
+      text-wrap: pretty;
+    }
+
+    .fine {
+      font-size: clamp(13px, 1.05vw, 16px);
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .accent-cyan { color: var(--cyan); }
+    .accent-amber { color: var(--amber); }
+    .accent-green { color: var(--green); }
+    .accent-coral { color: var(--coral); }
+    .accent-violet { color: var(--violet); }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .image-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.04);
+    }
+
+    .image-frame.contain img {
+      object-fit: contain;
+      padding: 8px;
+      background: rgba(5, 7, 12, 0.72);
+    }
+
+    .caption {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 6px 9px;
+      background: rgba(2, 6, 12, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(243, 247, 251, 0.9);
+      font-size: clamp(11px, 0.9vw, 13px);
+      font-weight: 700;
+    }
+
+    .nav {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border: 1px solid rgba(127, 213, 255, 0.2);
+      background: rgba(3, 8, 14, 0.74);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav button {
+      width: 32px;
+      height: 28px;
+      border: 1px solid rgba(127, 213, 255, 0.24);
+      color: var(--soft);
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .nav button:hover { color: var(--cyan); border-color: rgba(71, 230, 255, 0.62); }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(183, 198, 214, 0.38);
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 0;
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(71, 230, 255, 0.72);
+    }
+
+    .page {
+      min-width: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .cover {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: clamp(26px, 4vw, 60px);
+      align-items: center;
+    }
+
+    .cover-title {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 30px;
+      max-width: 980px;
+      min-width: 0;
+    }
+
+    .cover-title h1 span {
+      display: block;
+    }
+
+    .cover-subtitle {
+      display: grid;
+      gap: 12px;
+      max-width: 720px;
+    }
+
+    .keyword-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .keyword {
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--soft);
+      font-size: clamp(14px, 1.1vw, 17px);
+      font-weight: 800;
+    }
+
+    .cover-visual {
+      position: relative;
+      min-height: 72vh;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(71, 230, 255, 0.24);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+      opacity: 0.62;
+    }
+
+    .orbit:nth-child(2) {
+      inset: 9%;
+      border-color: rgba(255, 181, 69, 0.22);
+      animation: spin 18s linear infinite;
+    }
+
+    .orbit:nth-child(3) {
+      inset: 20%;
+      border-color: rgba(86, 225, 155, 0.2);
+      animation: spin 24s linear reverse infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(342deg); }
+    }
+
+    .cover-stack {
+      position: absolute;
+      inset: 9% 8% 8% 9%;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      transform: rotate(-3deg);
+    }
+
+    .cover-stack .image-frame:first-child {
+      grid-row: 1 / 3;
+      clip-path: polygon(0 0, 100% 8%, 86% 100%, 0 92%);
+    }
+
+    .cover-stack .image-frame:nth-child(2) {
+      clip-path: polygon(9% 0, 100% 0, 100% 88%, 0 100%);
+    }
+
+    .cover-stack .image-frame:nth-child(3) {
+      clip-path: polygon(0 10%, 92% 0, 100% 100%, 8% 90%);
+    }
+
+    .mission {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: clamp(30px, 5vw, 70px);
+    }
+
+    .mission-left {
+      display: grid;
+      gap: 28px;
+    }
+
+    .mission-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mission-card {
+      position: relative;
+      min-height: clamp(220px, 32vh, 360px);
+      padding: clamp(20px, 2.2vw, 32px);
+      display: grid;
+      align-content: space-between;
+      overflow: hidden;
+    }
+
+    .mission-card::before {
+      content: attr(data-index);
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      color: rgba(255, 255, 255, 0.08);
+      font-size: clamp(56px, 7vw, 120px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .mission-card b {
+      font-size: clamp(58px, 7vw, 100px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .mission-card p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.25vw, 20px);
+      line-height: 1.55;
+      font-weight: 620;
+    }
+
+    .triad {
+      display: grid;
+      gap: 14px;
+    }
+
+    .triad-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .triad-row strong {
+      color: var(--cyan);
+      font-size: clamp(18px, 1.45vw, 24px);
+    }
+
+    .dashboard {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+      gap: clamp(32px, 5vw, 78px);
+    }
+
+    .big-number {
+      display: grid;
+      gap: 20px;
+      align-content: center;
+      min-height: 64vh;
+      padding: clamp(30px, 4vw, 56px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .big-number::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(71, 230, 255, 0.18);
+      background:
+        linear-gradient(90deg, rgba(71, 230, 255, 0.12), transparent 30%),
+        linear-gradient(0deg, rgba(255, 181, 69, 0.08), transparent 30%);
+      pointer-events: none;
+    }
+
+    .big-number .num {
+      font-size: clamp(118px, 18vw, 252px);
+      line-height: 0.83;
+      font-weight: 900;
+      color: var(--ink);
+      text-shadow: 0 0 48px rgba(71, 230, 255, 0.26);
+      z-index: 1;
+    }
+
+    .big-number .label {
+      z-index: 1;
+      color: var(--soft);
+      font-size: clamp(22px, 2.4vw, 36px);
+      font-weight: 800;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .metric {
+      padding: clamp(18px, 2vw, 28px);
+      min-height: 150px;
+      display: grid;
+      align-content: space-between;
+      border-left: 4px solid var(--cyan);
+    }
+
+    .metric:nth-child(2) { border-left-color: var(--amber); }
+    .metric:nth-child(3) { border-left-color: var(--green); }
+    .metric:nth-child(4) { border-left-color: var(--coral); }
+    .metric:nth-child(5) { border-left-color: var(--violet); }
+    .metric:nth-child(6) { border-left-color: var(--blue); }
+
+    .metric strong {
+      font-size: clamp(42px, 5.2vw, 76px);
+      line-height: 0.95;
+      font-weight: 900;
+    }
+
+    .metric span {
+      color: var(--soft);
+      font-size: clamp(14px, 1.2vw, 18px);
+      font-weight: 700;
+    }
+
+    .evidence {
+      grid-template-rows: auto 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .slide-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.55fr);
+      gap: 30px;
+      align-items: end;
+    }
+
+    .slide-head .lead {
+      align-self: end;
+      max-width: 720px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr 0.8fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .evidence-grid .image-frame:first-child {
+      grid-row: span 2;
+    }
+
+    .evidence-note {
+      padding: clamp(20px, 2.2vw, 34px);
+      display: grid;
+      align-content: space-between;
+      gap: 16px;
+    }
+
+    .evidence-note strong {
+      font-size: clamp(28px, 4vw, 58px);
+      line-height: 1;
+      color: var(--amber);
+      font-weight: 900;
+    }
+
+    .case-study {
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: clamp(30px, 4vw, 64px);
+      align-items: center;
+    }
+
+    .case-copy {
+      display: grid;
+      gap: 24px;
+      align-content: center;
+      min-width: 0;
+    }
+
+    .case-copy h2 {
+      font-size: clamp(40px, 5vw, 70px);
+      line-height: 1.02;
+    }
+
+    .case-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .case-point {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .case-point b {
+      color: var(--amber);
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .case-point span {
+      color: var(--soft);
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.45;
+      font-weight: 760;
+    }
+
+    .case-visual {
+      display: grid;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .photo-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.76fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .photo-main {
+      aspect-ratio: 4 / 3;
+      min-height: 0;
+    }
+
+    .photo-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .ratio-4-3 {
+      aspect-ratio: 4 / 3;
+    }
+
+    .ratio-3-4 {
+      aspect-ratio: 3 / 4;
+    }
+
+    .vehicle-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.34fr) minmax(260px, 0.66fr);
+      gap: clamp(18px, 2.4vw, 34px);
+      align-items: center;
+    }
+
+    .vehicle-layout .photo-main {
+      align-self: center;
+    }
+
+    .stat-stack {
+      display: grid;
+      align-content: center;
+      min-height: 100%;
+    }
+
+    .stat-card {
+      min-height: clamp(300px, 38vh, 420px);
+      padding: clamp(24px, 2.4vw, 38px);
+      display: grid;
+      gap: 18px;
+      align-content: center;
+    }
+
+    .stat-card strong {
+      font-size: clamp(70px, 8vw, 118px);
+      line-height: 0.92;
+      color: var(--amber);
+      font-weight: 900;
+    }
+
+    .stat-card span,
+    .stat-card p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.18vw, 19px);
+      line-height: 1.5;
+      font-weight: 760;
+      margin: 0;
+    }
+
+    .evidence-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .matrix {
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: clamp(28px, 4vw, 62px);
+      align-items: center;
+    }
+
+    .project-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-board.script-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .project {
+      min-height: 180px;
+      padding: clamp(18px, 1.7vw, 26px);
+      display: grid;
+      gap: 18px;
+      align-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-board.script-flow .project {
+      min-height: 150px;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+
+    .project .status {
+      display: inline-flex;
+      width: fit-content;
+      padding: 5px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .project p {
+      color: var(--soft);
+      font-size: clamp(14px, 1.12vw, 17px);
+      line-height: 1.55;
+    }
+
+    .teacher-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .teacher-line span {
+      padding: 7px 10px;
+      color: var(--soft);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(26px, 4vw, 58px);
+      align-items: center;
+    }
+
+    .photo-triptych {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 68vh;
+    }
+
+    .photo-triptych .image-frame:first-child {
+      grid-row: span 2;
+    }
+
+    .program-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .program {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .program strong {
+      color: var(--cyan);
+      font-size: clamp(18px, 1.5vw, 24px);
+    }
+
+    .program p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.18vw, 18px);
+      line-height: 1.55;
+    }
+
+    .strategy {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(28px, 4vw, 62px);
+      align-items: center;
+    }
+
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .rule {
+      padding: 22px;
+      min-height: 150px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .rule b {
+      font-size: clamp(36px, 4.5vw, 64px);
+      line-height: 1;
+      color: var(--amber);
+    }
+
+    .rule span {
+      color: var(--soft);
+      font-size: clamp(15px, 1.2vw, 18px);
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .whitelist-wrap {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 14px;
+      height: 68vh;
+    }
+
+    .whitelist-wrap .image-frame {
+      min-height: 0;
+    }
+
+    .whitelist-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .whitelist-tags span {
+      padding: 9px 12px;
+      background: rgba(71, 230, 255, 0.08);
+      border: 1px solid rgba(71, 230, 255, 0.2);
+      color: var(--soft);
+      font-weight: 800;
+      font-size: clamp(13px, 1.05vw, 15px);
+    }
+
+    .strategy h2 {
+      font-size: clamp(38px, 4.2vw, 66px);
+      line-height: 1.01;
+    }
+
+    .next {
+      grid-template-rows: auto 1fr;
+      gap: 30px;
+    }
+
+    .mission-board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .task-card {
+      padding: clamp(18px, 2vw, 30px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+      min-height: 54vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .next .task-card {
+      min-height: 46vh;
+    }
+
+    .task-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 5px;
+      background: var(--cyan);
+    }
+
+    .task-card:nth-child(2)::after { background: var(--amber); }
+    .task-card:nth-child(3)::after { background: var(--green); }
+    .task-card:nth-child(4)::after { background: var(--coral); }
+
+    .task-card .code {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .task-card h3 {
+      font-size: clamp(26px, 2.7vw, 42px);
+    }
+
+    .task-card p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.56;
+    }
+
+    .owner {
+      color: var(--cyan);
+      font-size: clamp(14px, 1.05vw, 17px);
+      font-weight: 800;
+    }
+
+    .system {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(28px, 4vw, 62px);
+      align-items: center;
+    }
+
+    .shift-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .shift {
+      display: grid;
+      grid-template-columns: 1fr 68px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .shift-box {
+      min-height: 148px;
+      padding: 24px;
+      display: grid;
+      gap: 12px;
+      align-content: center;
+    }
+
+    .shift-box small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .shift-box strong {
+      font-size: clamp(22px, 2.1vw, 34px);
+      line-height: 1.16;
+    }
+
+    .arrow {
+      height: 2px;
+      position: relative;
+      background: linear-gradient(90deg, var(--muted), var(--cyan));
+    }
+
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid var(--cyan);
+      border-right: 2px solid var(--cyan);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .pipeline {
+      grid-template-rows: auto 1fr;
+      gap: 28px;
+    }
+
+    .pipeline-track {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .stage {
+      padding: clamp(18px, 2vw, 30px);
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      min-height: 58vh;
+    }
+
+    .stage-number {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      color: #001017;
+      background: var(--cyan);
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .stage:nth-child(2) .stage-number { background: var(--amber); }
+    .stage:nth-child(3) .stage-number { background: var(--green); }
+    .stage:nth-child(4) .stage-number { background: var(--coral); }
+
+    .stage h3 {
+      font-size: clamp(24px, 2.35vw, 38px);
+    }
+
+    .stage p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.22vw, 19px);
+      line-height: 1.58;
+    }
+
+    .brand {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(28px, 4vw, 62px);
+      align-items: center;
+    }
+
+    .brand-mark {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 18px;
+      align-items: stretch;
+      min-height: 62vh;
+    }
+
+    .logo-stage {
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at center, rgba(71, 230, 255, 0.14), transparent 62%),
+        rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .logo-stage img {
+      width: min(72%, 360px);
+      height: auto;
+      filter: drop-shadow(0 0 24px rgba(71, 230, 255, 0.18));
+    }
+
+    .brand-actions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .brand-action {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .brand-action b {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: #001017;
+      background: var(--amber);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .brand-action:nth-child(2) b { background: var(--green); }
+    .brand-action:nth-child(3) b { background: var(--cyan); }
+    .brand-action p {
+      color: var(--soft);
+      font-size: clamp(15px, 1.16vw, 18px);
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .ai-workflow {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .ai-workflow span {
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--soft);
+      font-size: clamp(14px, 1.08vw, 17px);
+      font-weight: 800;
+    }
+
+    .closing {
+      grid-template-columns: minmax(0, 0.66fr) minmax(0, 1.34fr);
+      gap: clamp(24px, 3.2vw, 46px);
+      align-items: center;
+    }
+
+    .final-wall {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      height: 72vh;
+      transform: rotate(-1deg);
+    }
+
+    .final-wall .image-frame {
+      min-height: 0;
+      animation: breathe 5s ease-in-out infinite;
+    }
+
+    .final-wall .image-frame:nth-child(1) { grid-row: span 2; grid-column: span 2; }
+    .final-wall .image-frame:nth-child(4) { grid-row: span 2; }
+    .final-wall .image-frame:nth-child(7) { grid-column: span 2; }
+    .final-wall .image-frame:nth-child(odd) { animation-delay: 600ms; }
+
+    .closing-photo-wall {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      align-content: center;
+      align-items: center;
+      min-height: 72vh;
+    }
+
+    .closing-photo-wall .image-frame {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      min-height: 0;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translateY(0); filter: brightness(0.96); }
+      50% { transform: translateY(-4px); filter: brightness(1.08); }
+    }
+
+    .final-statement {
+      display: grid;
+      gap: 22px;
+    }
+
+    .final-statement h2 {
+      font-size: clamp(42px, 5.4vw, 86px);
+    }
+
+    .closing .final-statement h2 {
+      font-size: clamp(38px, 3.78vw, 60px);
+      line-height: 1.05;
+    }
+
+    .closing-line {
+      padding: 16px 18px;
+      border-left: 5px solid var(--amber);
+      background: rgba(255, 181, 69, 0.08);
+      color: var(--soft);
+      font-size: clamp(17px, 1.38vw, 22px);
+      line-height: 1.55;
+      font-weight: 800;
+    }
+
+    @media (max-width: 980px) {
+      .slide {
+        padding: 54px 24px 70px;
+      }
+
+      .cover,
+      .mission,
+      .dashboard,
+      .case-study,
+      .matrix,
+      .field,
+      .strategy,
+      .system,
+      .brand,
+      .closing {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .cover-visual,
+      .whitelist-wrap,
+      .photo-triptych,
+      .final-wall,
+      .closing-photo-wall {
+        min-height: auto;
+      }
+
+      .slide-head,
+      .mission-map,
+      .metric-grid,
+      .photo-layout,
+      .vehicle-layout,
+      .project-board,
+      .rule-grid,
+      .mission-board,
+      .pipeline-track {
+        grid-template-columns: 1fr;
+      }
+
+      .closing-photo-wall {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mission-board,
+      .pipeline-track {
+        max-height: 60vh;
+        overflow: auto;
+      }
+
+      .task-card,
+      .stage {
+        min-height: 260px;
+      }
+
+      .evidence-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .program,
+      .shift,
+      .brand-action,
+      .case-point {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        width: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <main class="deck" id="deck">
+    <section class="slide cover active" data-title="封面">
+      <div class="hud"><span><strong>TECH REPORT 2.1</strong> / 2025 SECOND SEMESTER</span><span>学生发展中心 · 金炜熙</span></div>
+      <div class="cover-title">
+        <span class="section-tag">2025 学年第二学期科技工作汇报</span>
+        <h1><span>科技筑基</span><span class="accent-cyan">品牌突围</span></h1>
+        <div class="cover-subtitle">
+          <p class="lead">学生发展中心：金炜熙</p>
+          <div class="keyword-row">
+            <span class="keyword">稳：常规赛事持续推进</span>
+            <span class="keyword">广：科普活动面向更多学生展开</span>
+            <span class="keyword">变：从单项参赛走向品牌建设</span>
+          </div>
+        </div>
+      </div>
+      <div class="cover-visual" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="orbit"></div>
+        <div class="cover-stack">
+          <figure class="image-frame"><img src="images/vehicle-2.jpg" alt="车模比赛现场"></figure>
+          <figure class="image-frame"><img src="images/ai-lecture-1.jpg" alt="人工智能科普讲座"></figure>
+          <figure class="image-frame"><img src="images/model-class-2.jpg" alt="模型进课堂活动"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide mission" data-title="汇报主线">
+      <div class="hud"><span><strong>01</strong> / REPORT LOGIC</span><span>稳 · 广 · 变</span></div>
+      <div class="mission-left">
+        <span class="section-tag">本学期科技工作关键词</span>
+        <h2>稳、广、变，<br>先说清主线。</h2>
+        <p class="lead">下面从成果、规划和思考三个方面作简要汇报。</p>
+      </div>
+      <div class="mission-map">
+        <article class="mission-card panel" data-index="01">
+          <b class="accent-cyan">稳</b>
+          <p>常规赛事持续推进，优势项目继续保持稳定输出。</p>
+        </article>
+        <article class="mission-card panel" data-index="02">
+          <b class="accent-amber">广</b>
+          <p>科普活动面向更多学生展开，让更多孩子先接触、先感兴趣。</p>
+        </article>
+        <article class="mission-card panel" data-index="03">
+          <b class="accent-green">变</b>
+          <p>开始思考科技工作怎样从单项参赛走向品牌建设。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide dashboard" data-title="成果总览">
+      <div class="hud"><span><strong>02</strong> / ACHIEVEMENT DASHBOARD</span><span>一、在持续参赛中积累成果</span></div>
+      <div class="big-number panel">
+        <span class="section-tag">在持续参赛中积累成果</span>
+        <div class="num">109</div>
+        <div class="label">项学生科技竞赛获奖</div>
+        <p class="fine">项目包括车辆模型、电子制作、航海模型、数字素养、三维设计、人工智能等多个方向。</p>
+      </div>
+      <div class="metric-grid">
+        <article class="metric panel"><strong>61</strong><span>区级获奖</span></article>
+        <article class="metric panel"><strong>48</strong><span>省级获奖</span></article>
+        <article class="metric panel"><strong>20</strong><span>一等奖 / 第一名</span></article>
+        <article class="metric panel"><strong>29</strong><span>二等奖 / 第二名</span></article>
+        <article class="metric panel"><strong>60</strong><span>三等奖及其他奖项</span></article>
+        <article class="metric panel"><strong>6+</strong><span>项目类别并行推进</span></article>
+      </div>
+    </section>
+
+    <section class="slide case-study electronics-case" data-title="电子制作">
+      <div class="hud"><span><strong>03</strong> / FIELD EVIDENCE</span><span>电子制作：稳定保持区前列</span></div>
+      <div class="case-copy">
+        <span class="section-tag">电子制作</span>
+        <h2>稳定保持<br>区前列。</h2>
+        <p class="lead">丁颖老师和谢校负责电子制作，小学组获区第 2 名，初中组获区第 8 名。</p>
+        <div class="case-points">
+          <article class="case-point panel"><b>2</b><span>小学组获得区第 2 名。</span></article>
+          <article class="case-point panel"><b>8</b><span>初中组获得区第 8 名。</span></article>
+          <article class="case-point panel"><b>稳</b><span>持续训练、规则理解、器材调试和学生状态把握共同支撑成绩。</span></article>
+        </div>
+      </div>
+      <div class="case-visual">
+        <div class="photo-layout">
+          <figure class="image-frame photo-main"><img src="images/electronics-1.jpg" alt="电子制作比赛合影"><figcaption class="caption">电子制作比赛现场</figcaption></figure>
+          <div class="photo-stack">
+            <figure class="image-frame ratio-4-3"><img src="images/electronics-2.jpg" alt="电子制作比赛操作"><figcaption class="caption">操作与调试</figcaption></figure>
+            <figure class="image-frame ratio-4-3"><img src="images/electronics-3.jpg" alt="电子制作训练现场"><figcaption class="caption">训练基础</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide case-study vehicle-case" data-title="车辆模型">
+      <div class="hud"><span><strong>04</strong> / VEHICLE MODEL</span><span>队伍不断，训练不断</span></div>
+      <div class="case-copy">
+        <span class="section-tag">车辆模型：队伍不断，训练不断</span>
+        <h2>队伍不断，<br>训练不断。</h2>
+        <p class="lead">车辆模型项目由金炜熙负责，小学组和初中组均获区第 8 名，省级赛事中也有个人获奖。</p>
+        <div class="case-points">
+          <article class="case-point panel"><b>8</b><span>小学组、初中组均获区第 8 名。</span></article>
+          <article class="case-point panel"><b>省</b><span>省级车辆模型赛事中有个人获奖。</span></article>
+          <article class="case-point panel"><b>变</b><span>学生结构变化、比赛规则调整带来波动，但训练基础仍在。</span></article>
+        </div>
+      </div>
+      <div class="case-visual vehicle-layout">
+        <figure class="image-frame photo-main"><img src="images/vehicle-2.jpg" alt="车辆模型比赛现场"><figcaption class="caption">车辆模型比赛现场</figcaption></figure>
+        <div class="stat-stack">
+          <article class="stat-card panel">
+            <strong>20</strong>
+            <span>位学生参加区车模比赛</span>
+            <p>王晓静老师利用周末协助带队，继续支撑科技团队发展。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide matrix" data-title="多项目推进">
+      <div class="hud"><span><strong>05</strong> / TEAM SUPPORT</span><span>多项目推进：团队力量持续汇聚</span></div>
+      <div>
+        <span class="section-tag">多项目推进</span>
+        <h2>团队力量，<br>持续汇聚。</h2>
+        <p class="lead" style="margin-top:24px;">王益红老师、罗琼老师继续支撑科技项目推进，科技编程和 AI 智能活动也已经完成参赛。</p>
+        <div class="teacher-line" style="margin-top:26px;">
+          <span>王益红</span>
+          <span>罗琼</span>
+          <span>科技编程</span>
+          <span>AI 智能活动</span>
+        </div>
+      </div>
+      <div class="project-board script-flow">
+        <article class="project panel">
+          <span class="status">初中项目</span>
+          <h3>王益红老师</h3>
+          <p>承担初中部三大类科技项目推进，并取得优异成绩。</p>
+        </article>
+        <article class="project panel">
+          <span class="status">新线起步</span>
+          <h3>海模项目</h3>
+          <p>罗琼老师新接手航海模型，小学组获区第 10 名，并在日常训练外每周额外加训。</p>
+        </article>
+        <article class="project panel">
+          <span class="status">结果待发</span>
+          <h3>编程 / AI</h3>
+          <p>科技编程和 AI 智能活动已完成参赛，单项成绩已出，团体成绩待公布。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide field" data-title="科普活动">
+      <div class="hud"><span><strong>06</strong> / SCIENCE FIELD</span><span>讲座与课堂</span></div>
+      <div class="photo-triptych">
+        <figure class="image-frame"><img src="images/model-class-1.jpg" alt="模型进课堂活动"><figcaption class="caption">模型进课堂</figcaption></figure>
+        <figure class="image-frame"><img src="images/ai-lecture-2.jpg" alt="人工智能讲座"><figcaption class="caption">认识身边的人工智能</figcaption></figure>
+        <figure class="image-frame"><img src="images/aviation-1.jpg" alt="航空国防讲座"><figcaption class="caption">我想去飞行</figcaption></figure>
+      </div>
+      <div>
+        <span class="section-tag">科普活动：面向更多学生展开</span>
+        <h2>先接触，<br>先感兴趣。</h2>
+        <div class="program-list" style="margin-top:28px;">
+          <article class="program panel">
+            <strong>03.24</strong>
+            <p>《认识身边的人工智能》讲座，让学生从生活场景理解 AI。</p>
+          </article>
+          <article class="program panel">
+            <strong>04.23</strong>
+            <p>《我想去飞行 - 93 阅兵的空中力量》讲座，把航空科技、国防教育和理想教育结合起来。</p>
+          </article>
+          <article class="program panel">
+            <strong>1-5 年级</strong>
+            <p>模型进课堂普及车模、海模、航模，为后续校队选苗打基础。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide strategy" data-title="规则变化">
+      <div class="hud"><span><strong>07</strong> / RULE SHIFT</span><span>二、在综合团体中找准重点</span></div>
+      <div>
+        <span class="section-tag">综合团体：多个项目一起支撑</span>
+        <h2>不是单项冲刺，<br>而是多点支撑。</h2>
+        <div class="rule-grid">
+          <article class="rule panel"><b>4</b><span>小学组取最佳 4 个区级团体项目</span></article>
+          <article class="rule panel"><b>3</b><span>初中组取最佳 3 个区级团体项目</span></article>
+          <article class="rule panel"><b>20</b><span>单项白名单市级以上最高可加 20 分</span></article>
+          <article class="rule panel"><b>60</b><span>白名单总加分上限为 60 分</span></article>
+        </div>
+      </div>
+      <div class="whitelist-wrap">
+        <figure class="image-frame contain"><img src="images/whitelist.png" alt="白名单赛事一览表"><figcaption class="caption">白名单赛事一览</figcaption></figure>
+        <div class="whitelist-tags">
+          <span>小学：车模 20 + 电子制作 20 = 40</span>
+          <span>初中：车模 20</span>
+          <span>下学期继续关注白名单赛事</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide next" data-title="下学期任务">
+      <div class="hud"><span><strong>08</strong> / NEXT TERM BOARD</span><span>项目提前量</span></div>
+      <div class="slide-head">
+        <div>
+          <span class="section-tag">下学期重点项目：提前布局</span>
+          <h2>学生、训练、节点、材料<br>都要提前。</h2>
+        </div>
+        <p class="lead">尽早明确学生、训练时间、参赛节点和材料要求，减少临时准备、被动参赛。</p>
+      </div>
+      <div class="mission-board">
+        <article class="task-card panel">
+          <span class="code">MISSION 01</span>
+          <h3>人人爱科学</h3>
+          <p>小学由金炜熙负责，初中由林赛钗负责，作为覆盖面和团体分的重要抓手。</p>
+          <span class="owner">负责人：金炜熙 / 林赛钗</span>
+        </article>
+        <article class="task-card panel">
+          <span class="code">MISSION 02</span>
+          <h3>空模</h3>
+          <p>需要尽早锁定学生名单、设备材料和训练频率，让新赛道形成稳定产出。</p>
+          <span class="owner">负责人：蒋琪乐</span>
+        </article>
+        <article class="task-card panel">
+          <span class="code">MISSION 03</span>
+          <h3>机器人</h3>
+          <p>兼顾规则理解、搭建调试和学生协作训练，提前形成训练节奏。</p>
+          <span class="owner">负责人：刘宣航</span>
+        </article>
+        <article class="task-card panel">
+          <span class="code">MISSION 04</span>
+          <h3>奇迹创意</h3>
+          <p>把创意表达、技术实现和作品材料同步推进，形成可展示、可提交的成果。</p>
+          <span class="owner">负责人：施杭婷 / 洪露晨</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide system" data-title="工作转向">
+      <div class="hud"><span><strong>09</strong> / SYSTEM SHIFT</span><span>三、在新形势下思考突围</span></div>
+      <div>
+        <span class="section-tag">从“做项目”走向“做体系”</span>
+        <h2>生源减少，<br>竞争更明显，<br>特色更需要被看见。</h2>
+        <p class="lead" style="margin-top:24px;">科技工作不能停留在“有比赛就报名、有通知就参加”。下一阶段要把选苗、训练、资料和传播连成系统。</p>
+      </div>
+      <div class="shift-stack">
+        <div class="shift">
+          <article class="shift-box panel"><small>过去</small><strong>做项目</strong></article>
+          <div class="arrow"></div>
+          <article class="shift-box panel"><small>下一阶段</small><strong class="accent-cyan">做体系</strong></article>
+        </div>
+        <div class="shift">
+          <article class="shift-box panel"><small>过去</small><strong>拿奖项</strong></article>
+          <div class="arrow"></div>
+          <article class="shift-box panel"><small>下一阶段</small><strong class="accent-amber">树品牌</strong></article>
+        </div>
+        <div class="shift">
+          <article class="shift-box panel"><small>过去</small><strong>临赛组织</strong></article>
+          <div class="arrow"></div>
+          <article class="shift-box panel"><small>下一阶段</small><strong class="accent-green">长期培养</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide pipeline" data-title="学生梯队">
+      <div class="hud"><span><strong>10</strong> / STUDENT PIPELINE</span><span>梯队培养</span></div>
+      <div class="slide-head">
+        <div>
+        <span class="section-tag">第一，重视精英培养</span>
+        <h2>把兴趣入口、识别机制和校队训练接起来。</h2>
+      </div>
+        <p class="lead">从低年级兴趣启蒙开始，中年级发现苗子，高年级进入校队训练。</p>
+      </div>
+      <div class="pipeline-track">
+        <article class="stage panel">
+          <div class="stage-number">1</div>
+          <h3>低年级兴趣</h3>
+          <p>通过模型进课堂、展示活动和小奖品，让学生先有接触、愿意尝试。</p>
+        </article>
+        <article class="stage panel">
+          <div class="stage-number">2</div>
+          <h3>中年级发现</h3>
+          <p>从班级、社团和课堂活动中识别动手能力强、愿意持续投入的学生。</p>
+        </article>
+        <article class="stage panel">
+          <div class="stage-number">3</div>
+          <h3>高年级训练</h3>
+          <p>进入专项队伍，围绕规则、技术、心理和比赛节奏进行稳定训练。</p>
+        </article>
+        <article class="stage panel">
+          <div class="stage-number">4</div>
+          <h3>成果展示</h3>
+          <p>用喜报、活动文章、影像资料和官网沉淀，让成长被看见、可延续。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide brand" data-title="品牌与效率">
+      <div class="hud"><span><strong>11</strong> / BRAND OPERATING SYSTEM</span><span>擎风模型队 + AI</span></div>
+      <div>
+        <span class="section-tag">第二/第三，品牌建设与效率提升</span>
+        <h2>让“擎风模型队”<br>看得见、留得住、传得开。</h2>
+        <p class="lead" style="margin-top:24px;">以“擎风模型队”为切入点，梳理车模、海模、航模三个方向的资源与成果。</p>
+        <div class="ai-workflow">
+          <span>网站呈现：Logo、比赛成绩、训练过程、学生成长记录</span>
+          <span>平台积累：喜报发布、活动推文、视频资料统一纳入</span>
+          <span>AI 提效：获奖数据、喜报制作、素材归档、课程资源整理</span>
+        </div>
+      </div>
+      <div class="brand-mark">
+        <div class="logo-stage"><img src="images/logo-1.png" alt="擎风模型队 logo"></div>
+        <div class="brand-actions">
+          <article class="brand-action panel"><b>看见</b><p>让科技成果不仅“有”，而且能被清楚看见。</p></article>
+          <article class="brand-action panel"><b>留存</b><p>让比赛、训练、学生成长形成持续记录。</p></article>
+          <article class="brand-action panel"><b>传播</b><p>让校队品牌通过官网、推文和视频素材继续传播。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide closing" data-title="收束">
+      <div class="hud"><span><strong>12</strong> / CLOSING</span><span>科技成为学校名片</span></div>
+      <div class="final-statement">
+        <span class="section-tag">总的来说</span>
+        <h2>把项目做扎实，<br>把学生培养好，<br>把成果<br>展示出来。</h2>
+        <p class="closing-line">让科技成为笕文发展中一张有亮度、有辨识度、能持续生长的学校名片。</p>
+        <p class="lead">谢谢大家。</p>
+      </div>
+      <div class="closing-photo-wall" aria-label="科技工作收束照片墙">
+        <figure class="image-frame"><img src="images/model-class-4.jpg" alt="模型课堂学生现场"><figcaption class="caption">模型进课堂</figcaption></figure>
+        <figure class="image-frame"><img src="images/vehicle-4.jpg" alt="车辆模型校队训练"><figcaption class="caption">校队训练</figcaption></figure>
+        <figure class="image-frame"><img src="images/electronics-1.jpg" alt="电子制作比赛现场"><figcaption class="caption">电子制作</figcaption></figure>
+        <figure class="image-frame"><img src="images/vehicle-2.jpg" alt="车辆模型比赛现场"><figcaption class="caption">车辆模型</figcaption></figure>
+        <figure class="image-frame"><img src="images/ai-lecture-2.jpg" alt="人工智能讲座现场"><figcaption class="caption">AI 讲座</figcaption></figure>
+        <figure class="image-frame"><img src="images/aviation-1.jpg" alt="航空国防讲座现场"><figcaption class="caption">航空讲座</figcaption></figure>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav" aria-label="幻灯片导航">
+    <button id="prev" type="button" aria-label="上一页">‹</button>
+    <div class="dots" id="dots"></div>
+    <span class="page" id="page">01/13</span>
+    <button id="next" type="button" aria-label="下一页">›</button>
+  </nav>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dots = document.querySelector("#dots");
+    const page = document.querySelector("#page");
+    const prev = document.querySelector("#prev");
+    const next = document.querySelector("#next");
+    let active = 0;
+    let startX = 0;
+
+    slides.forEach((slide, index) => {
+      const button = document.createElement("button");
+      button.className = "dot" + (index === 0 ? " active" : "");
+      button.type = "button";
+      button.setAttribute("aria-label", `跳转到第 ${index + 1} 页：${slide.dataset.title || ""}`);
+      button.addEventListener("click", () => show(index));
+      dots.appendChild(button);
+    });
+
+    function show(index) {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === active));
+      Array.from(dots.children).forEach((dot, i) => dot.classList.toggle("active", i === active));
+      page.textContent = `${String(active + 1).padStart(2, "0")}/${String(slides.length).padStart(2, "0")}`;
+      document.title = `${slides[active].dataset.title || "科技汇报"} - 科技工作汇报 2.1`;
+    }
+
+    show(0);
+
+    prev.addEventListener("click", () => show(active - 1));
+    next.addEventListener("click", () => show(active + 1));
+    window.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "PageDown", " "].includes(event.key)) show(active + 1);
+      if (["ArrowLeft", "PageUp", "Backspace"].includes(event.key)) show(active - 1);
+      if (event.key === "Home") show(0);
+      if (event.key === "End") show(slides.length - 1);
+    });
+
+    window.addEventListener("touchstart", (event) => {
+      startX = event.touches[0].clientX;
+    }, { passive: true });
+
+    window.addEventListener("touchend", (event) => {
+      const endX = event.changedTouches[0].clientX;
+      if (Math.abs(endX - startX) < 42) return;
+      show(endX < startX ? active + 1 : active - 1);
+    }, { passive: true });
+
+    const canvas = document.querySelector("#field");
+    const ctx = canvas.getContext("2d");
+    const particles = [];
+    const particleCount = 76;
+
+    function resize() {
+      canvas.width = Math.floor(window.innerWidth * window.devicePixelRatio);
+      canvas.height = Math.floor(window.innerHeight * window.devicePixelRatio);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+    }
+
+    function seed() {
+      particles.length = 0;
+      for (let i = 0; i < particleCount; i += 1) {
+        particles.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.22,
+          r: 1 + Math.random() * 1.7,
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.fillStyle = "rgba(71, 230, 255, 0.58)";
+      ctx.strokeStyle = "rgba(71, 230, 255, 0.13)";
+      ctx.lineWidth = 1;
+
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -20) p.x = window.innerWidth + 20;
+        if (p.x > window.innerWidth + 20) p.x = -20;
+        if (p.y < -20) p.y = window.innerHeight + 20;
+        if (p.y > window.innerHeight + 20) p.y = -20;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      for (let i = 0; i < particles.length; i += 1) {
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const a = particles[i];
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 150) {
+            ctx.globalAlpha = (150 - distance) / 150;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    seed();
+    draw();
+    window.addEventListener("resize", () => {
+      resize();
+      seed();
+    });
+  </script>
+</body>
+</html>
